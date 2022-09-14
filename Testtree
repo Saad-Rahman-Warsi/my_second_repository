@@ -1,0 +1,89 @@
+import java.io.*;
+import java.util.*;
+
+public class Testtree
+{
+    BTNode<Integer> root;
+
+    public void insert(BTNode e,int a)
+    {
+        if (e.value>a)
+        {
+            if (e.right_child==null)
+            {
+                n=new BTNode<Integer>();
+                n.value=a;
+                e.right_child=n;
+            }
+            else
+            {
+                 insert(BTNode e.right_child,int a);
+            }
+        }
+        else
+        {
+            if (e.left_child==null)
+            {
+                n=new BTNode<Integer>();
+                n.value=a;
+                e.left_child=n;
+            }
+            else
+            {
+                 insert(BTNode e.left_child,int a);
+            }
+        }
+    }
+    public void inorder (BTNode e)
+    {
+        if (e!=null)
+        {
+        inorder(e.left_child);
+        System.out.println(e.value);
+        inorder(e.right_child);
+        }
+    }
+    public void preorder(BTNode e)
+    {
+        if (e!=null)
+        {
+        System.out.println(e.value);
+        inorder(e.left_child);
+        inorder(e.right_child);
+        }
+    }
+    public void postorder(BTNode e)
+    {
+        if (e!=null)
+        {
+        inorder(e.left_child);
+        inorder(e.right_child);
+        System.out.println(e.value);
+        }
+    }
+	public static void main(String[] args)
+	{
+	    
+	    root=new BTNode<Integer>();
+	    root.value=null;
+	    root.left=null;
+	    root.right=null;
+	    System.out.println("press 1 to enter number");
+        int choice;
+        Scanner Sc = new Scanner(System.in);
+        choice=Sc.nextInt();
+        while (choice==1)
+        {
+        System.out.println("number");
+        int n;
+        n=Sc.nextInt();
+        insert(n);
+        }
+        System.out.println("preorder");
+        preorder();
+        System.out.println("inorder")
+        inorder();
+        System.out.println("postorder");
+        postorder();
+	}
+}
